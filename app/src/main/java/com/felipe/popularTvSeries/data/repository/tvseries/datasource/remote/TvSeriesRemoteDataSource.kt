@@ -12,5 +12,5 @@ class TvSeriesRemoteDataSource @Inject constructor() : TvSeriesDataSource {
   @Inject lateinit var api: TvSeriesApi
 
   override suspend fun getPopularMovies(params: GetPopularTvSeriesParams): ResultWrapper<List<TvSerie>> =
-    getSafeResult { api.getPopularTvSeries(params.language, params.count).transformToDomain() }
+    getSafeResult { api.getPopularTvSeries().transformToDomain() }
 }

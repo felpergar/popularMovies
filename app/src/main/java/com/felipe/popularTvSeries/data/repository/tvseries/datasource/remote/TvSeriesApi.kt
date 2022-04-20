@@ -7,10 +7,11 @@ import retrofit2.http.Query
 
 interface TvSeriesApi {
 
-  @GET("tv/popular?api_key=$API_KEY")
+  @GET("tv/popular")
   suspend fun getPopularTvSeries(
-  @Query("language") language: String = ES,
-  @Query("count") count: Int
+    @Query("api_key") apiKey: String = API_KEY,
+    @Query("language") language: String = ES,
+    @Query("page") count: Int = 1
   ): TvSeriesResultRemoteEntity
 }
 
