@@ -35,13 +35,13 @@ class MainPresenter @Inject constructor(
     withContext(mainDispatcher) { getView().hideLoading() }
   }
 
-  fun onTvSerieSelected(id: String) {
-    getView().openTvSerieDetail(id)
+  fun onTvSerieSelected(tvSerie: TvSerieViewEntity) {
+    getView().openTvSerieDetail(tvSerie)
   }
 
   interface MainView : View {
     fun showItems(tvSeries: List<TvSerieViewEntity>)
     fun initRecyclerView()
-    fun openTvSerieDetail(id: String)
+    fun openTvSerieDetail(tvSerie: TvSerieViewEntity)
   }
 }

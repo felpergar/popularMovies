@@ -11,7 +11,7 @@ import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
 import com.felipe.populartvseries.R
 import com.felipe.populartvseries.databinding.AdapterTvSerieBinding
 
-class TvSerieAdapter(private val onTvSerieSelected: (String) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TvSerieAdapter(private val onTvSerieSelected: (TvSerieViewEntity) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
   var items: ArrayList<TvSerieViewEntity> = arrayListOf()
 
@@ -34,7 +34,7 @@ class TvSerieAdapter(private val onTvSerieSelected: (String) -> Unit): RecyclerV
     fun bind(item: TvSerieViewEntity) {
 
       with(AdapterTvSerieBinding.bind(itemView)) {
-        containerLayout.setOnClickListener { onTvSerieSelected(item.id.toString()) }
+        containerLayout.setOnClickListener { onTvSerieSelected(item) }
         title.text = item.originalName
         score.text = item.voteAverage
         poster.load(item.posterImage)

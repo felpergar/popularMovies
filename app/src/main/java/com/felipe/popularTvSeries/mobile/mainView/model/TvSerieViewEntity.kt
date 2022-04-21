@@ -1,7 +1,10 @@
 package com.felipe.popularTvSeries.mobile.mainView.model
 
+import android.os.Parcelable
 import com.felipe.popularTvSeries.domain.movies.model.TvSerie
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 class TvSerieViewEntity(
   val posterImage: String?,
   val id: Int?,
@@ -12,9 +15,7 @@ class TvSerieViewEntity(
   val originCountry: String?,
   val originLanguage: String?,
   val originalName: String?
-) {
-
-}
+): Parcelable
 
 fun List<TvSerie>.transformToViewEntity() = map { it.transformToViewEntity() }
 
