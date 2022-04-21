@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.felipe.popularTvSeries.mobile.common.load
 import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
 import com.felipe.populartvseries.R
 import com.felipe.populartvseries.databinding.AdapterTvSerieBinding
 
-class TvSerieAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TvSerieAdapter(private val onTvSerieSelected: (String) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
   var items: ArrayList<TvSerieViewEntity> = arrayListOf()
 
@@ -31,25 +32,14 @@ class TvSerieAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
   inner class TvSerieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(item: TvSerieViewEntity) {
+
       with(AdapterTvSerieBinding.bind(itemView)) {
+        containerLayout.setOnClickListener { onTvSerieSelected(item.id.toString()) }
         title.text = item.originalName
         score.text = item.voteAverage
-        poster.load("$BASE_URL${item.posterImage}")
+        poster.load(item.posterImage)
       }
     }
   }
-
-  fun ImageView.load(url: String?) {
-    Glide.with(this).load(url).into(this)
-//    val glideUrl = GlideUrl(url, headers)
-//    val requestBuilder = Glide.with(context)
-//      .load(glideUrl)
-//      .signature(GlideIntegerVersionSignature(context))
-//      .apply(RequestOptions().downsample(DownsampleStrategy.AT_LEAST))
-//    placeholderId?.let { requestBuilder.placeholder(placeholderId) }
-//    requestBuilder.into(this)
-  }
-
 }
 
-private const val BASE_URL = "https://image.tmdb.org/t/p/w500"

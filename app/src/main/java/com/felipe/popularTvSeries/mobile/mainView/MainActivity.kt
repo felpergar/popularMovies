@@ -9,6 +9,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.felipe.popularTvSeries.mobile.common.BaseActivity
+import com.felipe.popularTvSeries.mobile.detail.DetailActivity
 import com.felipe.popularTvSeries.mobile.mainView.adapter.TvSerieAdapter
 import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
 import com.felipe.populartvseries.databinding.ActivityMainBinding
@@ -22,7 +23,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(), MainPresenter.MainView 
   override val bindingInflater: (LayoutInflater) -> ActivityMainBinding
     get() = ActivityMainBinding::inflate
 
-  private val tvSerieAdapter by lazy { TvSerieAdapter() }
+  private val tvSerieAdapter by lazy { TvSerieAdapter(presenter::onTvSerieSelected) }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -41,6 +42,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(), MainPresenter.MainView 
 
   override fun showItems(tvSeries: List<TvSerieViewEntity>) {
     tvSerieAdapter.setItems(tvSeries)
+  }
+
+  override fun openTvSerieDetail(id: String) {
+    startActivity(DetailActivity.getCallingIntent(this, id))
   }
 
   override fun showLoading() {
