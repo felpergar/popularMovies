@@ -9,6 +9,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.felipe.popularTvSeries.mobile.common.BaseActivity
+import com.felipe.popularTvSeries.mobile.common.PaginationListener
 import com.felipe.popularTvSeries.mobile.detail.DetailActivity
 import com.felipe.popularTvSeries.mobile.mainView.adapter.TvSerieAdapter
 import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
@@ -35,6 +36,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(), MainPresenter.MainView 
     with(binding.mainRecyclerView) {
       layoutManager = LinearLayoutManager(this@MainActivity)
       setHasFixedSize(true)
+      addOnScrollListener(PaginationListener(presenter::onListEnded))
       if (adapter == null)
         adapter = tvSerieAdapter
     }

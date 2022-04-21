@@ -9,11 +9,10 @@ interface TvSeriesApi {
 
   @GET("tv/popular")
   suspend fun getPopularTvSeries(
-    @Query("api_key") apiKey: String = API_KEY,
-    @Query("language") language: String = ES,
-    @Query("page") count: Int = 1
+    @Query("language") language: String,
+    @Query("page") count: Int,
+    @Query("api_key") apiKey: String = API_KEY
   ): TvSeriesResultRemoteEntity
 }
 
 private const val API_KEY = "c6aeee577586ba38e487b74dfede5deb"
-private const val ES = "en-US"
