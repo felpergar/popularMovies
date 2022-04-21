@@ -16,7 +16,21 @@ class TvSerieRemoteEntity(
 ) {
 
   fun transformToDomain() =
-    TvSerie(posterImage, id, backdropImage, voteAverage.toString(), description, firstAirDate, originCountry?.first(), originLanguage, originName)
+    if (isValid())
+      TvSerie(
+        posterImage,
+        id,
+        backdropImage,
+        voteAverage.toString(),
+        description,
+        firstAirDate,
+        originCountry?.first(),
+        originLanguage,
+        originName
+      )
+    else null
+
+  private fun isValid() = id != null && !originName.isNullOrBlank() && voteAverage != null  //This condition could be change, depend on PO
 }
 
 private const val POSTER_IMAGE = "poster_path"

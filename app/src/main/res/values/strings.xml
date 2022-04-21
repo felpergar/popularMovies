@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">PopularTvSeries</string>
+  <string name="error_message">Something was wrong to show the info</string>
 </resources>

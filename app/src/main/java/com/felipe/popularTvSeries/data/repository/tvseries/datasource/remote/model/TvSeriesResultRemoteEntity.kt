@@ -6,7 +6,7 @@ class TvSeriesResultRemoteEntity(
   @SerializedName(RESULTS) val movies: List<TvSerieRemoteEntity>
 ) {
 
-  fun transformToDomain() = movies.map { it.transformToDomain() }
+  fun transformToDomain() = movies.mapNotNull { it.transformToDomain() }
 }
 
 private const val RESULTS = "results"

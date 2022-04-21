@@ -4,9 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import com.felipe.popularTvSeries.mobile.common.BaseActivity
+import com.felipe.popularTvSeries.mobile.common.load
 import com.felipe.popularTvSeries.mobile.common.showToast
 import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
+import com.felipe.populartvseries.R
 import com.felipe.populartvseries.databinding.ActivityDetailBinding
 
 class DetailActivity : BaseActivity<ActivityDetailBinding>(), DetailPresenter.DetailView {
@@ -29,18 +33,24 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(), DetailPresenter.De
   }
 
   override fun showError() {
-    showToast("Something was wrong to show the info")
+    showToast(getString(R.string.error_message))
   }
 
   override fun showInfo(info: TvSerieViewEntity) {
-    showToast("Everything was ok to show the info")
+    with(binding) {
+      serieImage.load(info.backdropImage)
+      title.text = info.originalName
+      score.text = info.voteAverage
+      description.text = info.description
+    }
+    //We can add more information here
   }
 
   override fun showLoading() {
-
+    binding.loader.visibility = VISIBLE
   }
 
   override fun hideLoading() {
-
+    binding.loader.visibility = GONE
   }
 }

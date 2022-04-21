@@ -13,4 +13,4 @@ fun Context.showToast(text: String, duration: Int = Toast.LENGTH_SHORT) {
   Toast.makeText(this, text, duration).show()
 }
 
-private const val BASE_URL = "https://image.tmdb.org/t/p/w500"
+private const val BASE_URL = "https://image.tmdb.org/t/p/w300"
