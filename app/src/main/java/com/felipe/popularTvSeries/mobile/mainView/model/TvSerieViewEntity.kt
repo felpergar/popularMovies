@@ -11,7 +11,7 @@ class TvSerieViewEntity(
   val firstAirDate: String?,
   val originCountry: String?,
   val originLanguage: String?,
-  val originName: String?
+  val originalName: String?
 ) {
 
 }
