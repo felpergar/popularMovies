@@ -1,6 +1,6 @@
 package com.felipe.popularTvSeries.data.repository.tvseries.datasource.remote.model
 
-import com.felipe.popularTvSeries.domain.movies.model.TvSerie
+import com.felipe.popularTvSeries.domain.tvseries.model.TvSerie
 import com.google.gson.annotations.SerializedName
 
 class TvSerieRemoteEntity(
@@ -19,14 +19,14 @@ class TvSerieRemoteEntity(
     if (isValid())
       TvSerie(
         posterImage,
-        id,
+        id!!,
         backdropImage,
         voteAverage.toString(),
         description,
         firstAirDate,
         originCountry?.first(),
         originLanguage,
-        originName
+        originName!!
       )
     else null
 

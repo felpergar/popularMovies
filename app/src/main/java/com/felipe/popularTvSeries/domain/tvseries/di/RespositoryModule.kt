@@ -1,7 +1,7 @@
-package com.felipe.popularTvSeries.domain.movies.di
+package com.felipe.popularTvSeries.domain.tvseries.di
 
 import com.felipe.popularTvSeries.data.repository.tvseries.TvSeriesDataRepository
-import com.felipe.popularTvSeries.domain.movies.TvSeriesRepository
+import com.felipe.popularTvSeries.domain.tvseries.TvSeriesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

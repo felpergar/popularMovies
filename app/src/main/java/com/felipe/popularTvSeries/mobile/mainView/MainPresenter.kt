@@ -1,8 +1,8 @@
 package com.felipe.popularTvSeries.mobile.mainView
 
 import com.felipe.popularTvSeries.data.common.ResultWrapper
-import com.felipe.popularTvSeries.domain.movies.usecase.GetPopularTvSeries
-import com.felipe.popularTvSeries.domain.movies.usecase.GetPopularTvSeriesParams
+import com.felipe.popularTvSeries.domain.tvseries.usecase.GetPopularTvSeries
+import com.felipe.popularTvSeries.domain.tvseries.usecase.GetPopularTvSeriesParams
 import com.felipe.popularTvSeries.mobile.common.Presenter
 import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
 import com.felipe.popularTvSeries.mobile.mainView.model.transformToViewEntity

@@ -1,9 +1,9 @@
-package com.felipe.popularTvSeries.domain.movies.usecase
+package com.felipe.popularTvSeries.domain.tvseries.usecase
 
 import com.felipe.popularTvSeries.data.common.ResultWrapper
 import com.felipe.popularTvSeries.domain.UseCaseAsync
-import com.felipe.popularTvSeries.domain.movies.TvSeriesRepository
-import com.felipe.popularTvSeries.domain.movies.model.TvSerie
+import com.felipe.popularTvSeries.domain.tvseries.TvSeriesRepository
+import com.felipe.popularTvSeries.domain.tvseries.model.TvSerie
 import javax.inject.Inject
 
 class GetPopularTvSeries @Inject constructor(): UseCaseAsync<GetPopularTvSeriesParams, List<TvSerie>> {

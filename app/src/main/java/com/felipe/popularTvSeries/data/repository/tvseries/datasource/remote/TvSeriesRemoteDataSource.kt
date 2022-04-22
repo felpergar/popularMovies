@@ -3,8 +3,8 @@ package com.felipe.popularTvSeries.data.repository.tvseries.datasource.remote
 import com.felipe.popularTvSeries.data.common.ResultWrapper
 import com.felipe.popularTvSeries.data.common.getSafeResult
 import com.felipe.popularTvSeries.data.repository.tvseries.datasource.TvSeriesDataSource
-import com.felipe.popularTvSeries.domain.movies.model.TvSerie
-import com.felipe.popularTvSeries.domain.movies.usecase.GetPopularTvSeriesParams
+import com.felipe.popularTvSeries.domain.tvseries.model.TvSerie
+import com.felipe.popularTvSeries.domain.tvseries.usecase.GetPopularTvSeriesParams
 import javax.inject.Inject
 
 class TvSeriesRemoteDataSource @Inject constructor() : TvSeriesDataSource {
