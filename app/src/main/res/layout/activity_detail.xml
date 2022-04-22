@@ -21,11 +21,12 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/black"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,13 +45,14 @@
         tools:text="_7.9"/>
 
     <ImageView
+        android:id="@+id/star"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@id/score"
         app:layout_constraintStart_toEndOf="@id/score"
         app:layout_constraintTop_toTopOf="@id/score"
-        app:srcCompat="@drawable/ic_iconmonstr_star_3" />
+        android:background="@drawable/ic_iconmonstr_star_3" />
 
     <TextView
         android:id="@+id/description"
@@ -63,7 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/score"
-        app:layout_constraintTop_toBottomOf="@id/score" />
+        app:layout_constraintTop_toBottomOf="@id/star" />
 
     <ProgressBar
         android:id="@+id/loader"

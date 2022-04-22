@@ -3,9 +3,8 @@ package com.felipe.popularTvSeries.mobile.mainView.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.felipe.popularTvSeries.mobile.common.W200_SIZE
 import com.felipe.popularTvSeries.mobile.common.load
 import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
 import com.felipe.populartvseries.R
@@ -37,7 +36,7 @@ class TvSerieAdapter(private val onTvSerieSelected: (TvSerieViewEntity) -> Unit)
         containerLayout.setOnClickListener { onTvSerieSelected(item) }
         title.text = item.originalName
         score.text = item.voteAverage
-        poster.load(item.posterImage)
+        poster.load(item.posterImage, W200_SIZE)
       }
     }
   }

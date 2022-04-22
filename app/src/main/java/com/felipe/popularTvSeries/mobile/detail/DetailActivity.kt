@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.felipe.popularTvSeries.mobile.common.BaseActivity
+import com.felipe.popularTvSeries.mobile.common.ORIGINAL_SIZE
 import com.felipe.popularTvSeries.mobile.common.load
 import com.felipe.popularTvSeries.mobile.common.showToast
 import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
@@ -38,7 +39,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(), DetailPresenter.De
 
   override fun showInfo(info: TvSerieViewEntity) {
     with(binding) {
-      serieImage.load(info.backdropImage)
+      serieImage.load(info.backdropImage, ORIGINAL_SIZE)
       title.text = info.originalName
       score.text = info.voteAverage
       description.text = info.description
