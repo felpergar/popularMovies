@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor(
-  private val getTvSeries: GetPopularTvSeries,
+  private val getTvSeries: GetPopularTvSeries
 ) : Presenter<MainPresenter.MainView>() {
 
   private val mainDispatcher: CoroutineDispatcher = Dispatchers.Main
