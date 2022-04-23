@@ -43,8 +43,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(), MainPresenter.MainView 
     tvSerieAdapter.setItems(tvSeries)
   }
 
-  override fun openTvSerieDetail(tvSerie: TvSerieViewEntity) {
-    startActivity(DetailActivity.getCallingIntent(this, tvSerie))
+  override fun openTvSerieDetail(id: Int, language: String) {
+    startActivity(DetailActivity.getCallingIntent(this, id, language))
   }
 
   override fun showLoading() {

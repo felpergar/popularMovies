@@ -6,7 +6,7 @@ import com.felipe.popularTvSeries.domain.tvseries.TvSeriesRepository
 import com.felipe.popularTvSeries.domain.tvseries.model.TvSerieInfo
 import javax.inject.Inject
 
-class cº @Inject constructor(): UseCaseAsync<GetTvSerieInfoParams, TvSerieInfo> {
+class GetTvSerieInfo @Inject constructor(): UseCaseAsync<GetTvSerieInfoParams, TvSerieInfo> {
 
   @Inject lateinit var repository: TvSeriesRepository
 

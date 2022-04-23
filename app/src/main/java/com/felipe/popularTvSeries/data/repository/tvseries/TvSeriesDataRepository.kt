@@ -33,8 +33,8 @@ class TvSeriesDataRepository @Inject constructor() : TvSeriesRepository {
   }
 
   override suspend fun getTvSerieInfo(params: GetTvSerieInfoParams): ResultWrapper<TvSerieInfo> {
-    return if (isConnected()) remoteDataSource.getTvSerieInfo(params)
-    else localDataSource.getTvSerieInfo(params)
+    return localDataSource.getTvSerieInfo(params)
+//    return if (isConnected()) remoteDataSource.getTvSerieInfo(params)
   }
 
   private fun isConnected(): Boolean {
