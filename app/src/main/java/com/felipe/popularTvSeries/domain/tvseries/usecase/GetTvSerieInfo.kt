@@ -14,4 +14,4 @@ class GetTvSerieInfo @Inject constructor(): UseCaseAsync<GetTvSerieInfoParams, T
     repository.getTvSerieInfo(params)
 }
 
-class GetTvSerieInfoParams(val id: Int, val language: String)
+class GetTvSerieInfoParams(val id: Int)

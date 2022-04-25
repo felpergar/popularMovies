@@ -23,8 +23,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(), DetailPresenter.De
   companion object {
     private const val ID = "id"
     private const val DEFAULT_ID = 0
-    private const val LANGUAGE = "language"
-    fun getCallingIntent(context: Context, id: Int, language: String) = Intent(context, DetailActivity::class.java).apply {
+    fun getCallingIntent(context: Context, id: Int) = Intent(context, DetailActivity::class.java).apply {
       putExtra(ID, id)
     }
   }
@@ -32,7 +31,6 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(), DetailPresenter.De
   override val bindingInflater: (LayoutInflater) -> ActivityDetailBinding = ActivityDetailBinding::inflate
 
   private val id by lazy { intent.getIntExtra(ID, DEFAULT_ID) }
-  private val language by lazy { intent.getStringExtra(ID) ?: "en-US"}
   @Inject lateinit var presenter: DetailPresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +39,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(), DetailPresenter.De
   }
 
   override fun onViewInit() {
-    presenter.initProcess(id, language)
+    presenter.initProcess(id)
   }
 
   override fun showError() {

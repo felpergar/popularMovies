@@ -7,15 +7,16 @@ import com.felipe.popularTvSeries.domain.tvseries.model.TvSerie
 import com.felipe.popularTvSeries.domain.tvseries.model.TvSerieInfo
 import com.felipe.popularTvSeries.domain.tvseries.usecase.GetPopularTvSeriesParams
 import com.felipe.popularTvSeries.domain.tvseries.usecase.GetTvSerieInfoParams
+import java.util.*
 import javax.inject.Inject
 
-class TvSeriesRemoteDataSource @Inject constructor() : TvSeriesDataSource {
+class TvSeriesRemoteDataSource @Inject constructor(val locale: Locale) : TvSeriesDataSource {
 
   @Inject lateinit var api: TvSeriesApi
 
   override suspend fun getPopularTvSeries(params: GetPopularTvSeriesParams): ResultWrapper<List<TvSerie>> =
-    getSafeResult { api.getPopularTvSeries(params.language, params.page).transformToDomain() }
+    getSafeResult { api.getPopularTvSeries(locale.toLanguageTag(), params.page).transformToDomain() }
 
   override suspend fun getTvSerieInfo(params: GetTvSerieInfoParams): ResultWrapper<TvSerieInfo> =
-    getSafeResult { api.getTvSerieInfo(params.id, params.language).transformToDomain() }
+    getSafeResult { api.getTvSerieInfo(params.id, locale.toLanguageTag()).transformToDomain() }
 }

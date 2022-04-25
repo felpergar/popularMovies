@@ -22,12 +22,12 @@ class DetailPresenter @Inject constructor(
     getView().onViewInit()
   }
 
-  fun initProcess(id: Int, language: String) {
-    launch { getInfo(id, language) }
+  fun initProcess(id: Int) {  //this could be improve passing id by params to presenter
+    launch { getInfo(id) }
   }
-  private suspend fun getInfo(id: Int, language: String) {
+  private suspend fun getInfo(id: Int) {
     withContext(mainDispatcher) { getView().showLoading() }
-    when (val result = getTvSerieInfo.buildAsync(GetTvSerieInfoParams(id, language))) {
+    when (val result = getTvSerieInfo.buildAsync(GetTvSerieInfoParams(id))) {
       is ResultWrapper.Success -> withContext(mainDispatcher) { getView().showInfo(result.data.transformToViewEntity()) }
       is ResultWrapper.Error -> println("TV SERIES: ${result.throwable.message}")
     }

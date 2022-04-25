@@ -14,4 +14,4 @@ class GetPopularTvSeries @Inject constructor(): UseCaseAsync<GetPopularTvSeriesP
     repository.getPopularMovies(params)
 }
 
-class GetPopularTvSeriesParams(val language: String, val page: Int)
+class GetPopularTvSeriesParams(val page: Int, val isConnected: Boolean)
