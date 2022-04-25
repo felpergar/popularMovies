@@ -5,6 +5,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -15,11 +17,18 @@ object RetrofitInjector {
 
   @Singleton
   @Provides
-  fun provideRetrofit(): Retrofit =
-    Retrofit.Builder()
-      .baseUrl("http://api.themoviedb.org/3/")
+  fun provideRetrofit(): Retrofit {
+    val okHttpClient = HttpLoggingInterceptor().run {
+      level = HttpLoggingInterceptor.Level.BODY
+      OkHttpClient.Builder().addInterceptor(this).build()
+    }
+
+    return Retrofit.Builder()
+      .baseUrl("https://api.themoviedb.org/3/")
+      .client(okHttpClient)
       .addConverterFactory(GsonConverterFactory.create())
       .build()
+  }
 
   @Singleton
   @Provides
