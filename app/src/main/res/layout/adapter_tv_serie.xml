@@ -13,7 +13,7 @@
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="@color/white">
+      >
 
     <ImageView
         android:id="@+id/poster"
@@ -28,7 +28,6 @@
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/poster"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,8 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toStartOf="@id/title"
         android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"/>
+        android:textSize="16sp"/>
 
     <ImageView
         android:layout_width="16dp"

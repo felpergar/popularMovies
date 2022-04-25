@@ -18,9 +18,7 @@
 
     <activity
         android:name="com.felipe.popularTvSeries.mobile.mainView.MainActivity"
-        android:exported="true"
-        android:screenOrientation="portrait"
-        >
+        android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -28,9 +26,8 @@
       </intent-filter>
     </activity>
 
-    <activity android:name="com.felipe.popularTvSeries.mobile.detail.DetailActivity"
-        android:screenOrientation="portrait"
-        />
+    <activity
+        android:name="com.felipe.popularTvSeries.mobile.detail.DetailActivity" />
   </application>
 
 </manifest>

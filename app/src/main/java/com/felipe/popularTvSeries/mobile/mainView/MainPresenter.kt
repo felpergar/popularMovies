@@ -10,6 +10,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor(
@@ -19,6 +20,7 @@ class MainPresenter @Inject constructor(
   private val mainDispatcher: CoroutineDispatcher = Dispatchers.Main
   private var page = FIRST_PAGE
   private var isLoading = false
+  private val language = Locale.getDefault().toLanguageTag()
 
   override fun onViewAttached() {
     getView().initRecyclerView()
@@ -28,7 +30,7 @@ class MainPresenter @Inject constructor(
   private suspend fun getTvSeries() {
     isLoading = true
     withContext(mainDispatcher) { getView().showLoading() }
-    val params = GetPopularTvSeriesParams(LANGUAGE, page)
+    val params = GetPopularTvSeriesParams(language, page)
     when (val result = getTvSeries.buildAsync(params)) {
       is ResultWrapper.Success -> withContext(mainDispatcher) { getView().showItems(result.data.transformToViewEntity()) }
       is ResultWrapper.Error -> println("TV SERIES: ${result.throwable.message}")
@@ -38,7 +40,7 @@ class MainPresenter @Inject constructor(
   }
 
   fun onTvSerieSelected(id: Int) {
-    getView().openTvSerieDetail(id, LANGUAGE)
+    getView().openTvSerieDetail(id, language)
   }
 
   fun onListEnded() {
@@ -56,4 +58,3 @@ class MainPresenter @Inject constructor(
 }
 
 private const val FIRST_PAGE = 1
-private const val LANGUAGE = "en-US"
