@@ -30,16 +30,12 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(), DetailPresenter.De
 
   override val bindingInflater: (LayoutInflater) -> ActivityDetailBinding = ActivityDetailBinding::inflate
 
-  private val id by lazy { intent.getIntExtra(ID, DEFAULT_ID) }
+  val id by lazy { intent.getIntExtra(ID, DEFAULT_ID) }
   @Inject lateinit var presenter: DetailPresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     presenter.attachView(this)
-  }
-
-  override fun onViewInit() {
-    presenter.initProcess(id)
   }
 
   override fun showError() {

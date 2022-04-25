@@ -8,7 +8,6 @@ import com.felipe.popularTvSeries.domain.tvseries.model.TvSerie
 import com.felipe.popularTvSeries.domain.tvseries.model.TvSerieInfo
 import com.felipe.popularTvSeries.domain.tvseries.usecase.GetPopularTvSeriesParams
 import com.felipe.popularTvSeries.domain.tvseries.usecase.GetTvSerieInfoParams
-import com.felipe.popularTvSeries.mobile.mainView.model.transformToViewEntity
 import javax.inject.Inject
 
 class TvSeriesLocalDataSource @Inject constructor(private val dao: TvSerieDao): TvSeriesDataSource {
@@ -21,9 +20,5 @@ class TvSeriesLocalDataSource @Inject constructor(private val dao: TvSerieDao): 
 
   fun savePopularTvSeries(tvSeries: List<TvSerie>) {
     dao.saveTvSeries(tvSeries.map { it.transformToLocalEntity() })
-  }
-
-  fun deleteAllDataBase() {
-    dao.deleteDataBase()
   }
 }

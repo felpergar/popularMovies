@@ -26,7 +26,6 @@ class TvSeriesDataRepository @Inject constructor() : TvSeriesRepository {
   private suspend fun getFromApi(params: GetPopularTvSeriesParams): ResultWrapper<List<TvSerie>> {
     val result = remoteDataSource.getPopularTvSeries(params)
     return if(result is ResultWrapper.Success) {
-      localDataSource.deleteAllDataBase()
       localDataSource.savePopularTvSeries(result.data)
       result
     }
