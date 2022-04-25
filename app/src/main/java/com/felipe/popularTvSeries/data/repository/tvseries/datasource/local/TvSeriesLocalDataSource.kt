@@ -22,4 +22,8 @@ class TvSeriesLocalDataSource @Inject constructor(private val dao: TvSerieDao): 
   fun savePopularTvSeries(tvSeries: List<TvSerie>) {
     dao.saveTvSeries(tvSeries.map { it.transformToLocalEntity() })
   }
+
+  fun deleteAllDataBase() {
+    dao.deleteDataBase()
+  }
 }

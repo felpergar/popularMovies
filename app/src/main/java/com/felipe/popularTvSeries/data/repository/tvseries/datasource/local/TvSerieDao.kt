@@ -17,4 +17,7 @@ interface TvSerieDao {
 
   @Query("SELECT * FROM tvserie")
   fun getPopularTvSeries(): List<TvSerieLocalEntity>
+
+  @Query("DELETE FROM tvserie")
+  fun deleteDataBase()
 }

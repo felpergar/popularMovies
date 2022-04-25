@@ -26,13 +26,12 @@ class DetailPresenter @Inject constructor(
     launch { getInfo(id, language) }
   }
   private suspend fun getInfo(id: Int, language: String) {
-    getView().showLoading()
+    withContext(mainDispatcher) { getView().showLoading() }
     when (val result = getTvSerieInfo.buildAsync(GetTvSerieInfoParams(id, language))) {
       is ResultWrapper.Success -> withContext(mainDispatcher) { getView().showInfo(result.data.transformToViewEntity()) }
       is ResultWrapper.Error -> println("TV SERIES: ${result.throwable.message}")
     }
-    getView().hideLoading()
-
+    withContext(mainDispatcher) { getView().hideLoading() }
   }
 
   interface DetailView : View {
@@ -41,5 +40,3 @@ class DetailPresenter @Inject constructor(
     fun showInfo(info: TvSerieInfoViewEntity)
   }
 }
-
-private const val LANGUAGE = "en-US"
