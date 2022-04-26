@@ -1,6 +1,5 @@
 package com.felipe.popularTvSeries.mobile.mainView
 
-import android.content.Context
 import com.felipe.popularTvSeries.data.common.ResultWrapper
 import com.felipe.popularTvSeries.domain.tvseries.usecase.GetPopularTvSeries
 import com.felipe.popularTvSeries.domain.tvseries.usecase.GetPopularTvSeriesParams
@@ -8,16 +7,13 @@ import com.felipe.popularTvSeries.mobile.common.ConnectivityHelper
 import com.felipe.popularTvSeries.mobile.common.Presenter
 import com.felipe.popularTvSeries.mobile.mainView.model.TvSerieViewEntity
 import com.felipe.popularTvSeries.mobile.mainView.model.transformToViewEntity
-import dagger.hilt.android.qualifiers.ActivityContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor(
-  private val locale: Locale,
   private val connectivityHelper: ConnectivityHelper,
   private val getTvSeries: GetPopularTvSeries
 ) : Presenter<MainPresenter.MainView>() {
