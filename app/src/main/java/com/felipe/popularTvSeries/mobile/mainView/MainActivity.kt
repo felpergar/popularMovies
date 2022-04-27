@@ -47,6 +47,11 @@ class MainActivity: BaseActivity<ActivityMainBinding>(), MainPresenter.MainView 
     startActivity(DetailActivity.getCallingIntent(this, id))
   }
 
+  override fun onDestroy() {
+    presenter.detachView()
+    super.onDestroy()
+  }
+
   override fun showLoading() {
     binding.loader.visibility = VISIBLE
   }
