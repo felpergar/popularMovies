@@ -47,6 +47,11 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(), DetailPresenter.De
     //We can add more information here
   }
 
+  override fun onDestroy() {
+    presenter.detachView()
+    super.onDestroy()
+  }
+
   override fun showLoading() {
     binding.loader.visibility = VISIBLE
   }
